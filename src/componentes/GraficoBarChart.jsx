@@ -1,7 +1,5 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
-// import { RechartsDevtools } from "@recharts/devtools";
 
-// #region Sample data
 const data = [
   { name: "Jan", atencao: 45, seguranca: 65, risco: 20 },
   { name: "Fev", atencao: 50, seguranca: 60, risco: 25 },
@@ -17,32 +15,33 @@ const data = [
   { name: "Dez", atencao: 42, seguranca: 64, risco: 40 },
 ];
 
-// #endregion
-const GraficoBarCharts = () => {
+const SimpleBarChart = () => {
   return (
-    <BarChart
-      style={{
-        width: "100%",
-        maxWidth: "1200px",
-        maxHeight: "70vh",
-        aspectRatio: 1.618,
-      }}
-      data={data}
-      margin={{ top: 5, right: 0, left: 0, bottom: 5 }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
-      <YAxis domain={[0, 80]} />
-      <Tooltip />
-      <Legend />
-
-      <Bar dataKey="risco" name="Risco" fill="#F31260" />
-
-      <Bar dataKey="atencao" name="Atenção" fill="#F5A524" />
-
-      <Bar dataKey="seguranca" name="Segurança" fill="#17C964" />
-    </BarChart>
+    <div className="grid w-full gap-5">
+      <h2 className="text-white text-2xl">Visão mensal dos Krs</h2>
+      <BarChart
+        style={{ width: "100%", maxWidth: "1300", maxHeight: "70vh", aspectRatio: 1.618 }}
+        responsive
+        data={data}
+        margin={{
+          top: 5,
+          right: 0,
+          left: 0,
+          bottom: 5,
+        }}
+        barGap={0}
+      >
+        <CartesianGrid vertical={false} strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis width="auto" />
+        <Tooltip />
+        <Legend />
+        <Bar dataKey="risco" fill="#F31260" />
+        <Bar dataKey="atencao" fill="#F5A524" />
+        <Bar dataKey="seguranca" fill="#17C964" />
+      </BarChart>
+    </div>
   );
 };
 
-export default GraficoBarCharts;
+export default SimpleBarChart;
