@@ -6,10 +6,13 @@ import iconRisco from "@/assets/icon-risco.svg";
 import iconSeguranca from "@/assets/icon-seguranca.svg";
 import iconTotal from "@/assets/icon-total.svg";
 import GraficoBarCharts from "@/componentes/GraficoBarChart";
+import GraficoPieChats from "@/componentes/GraficoPieCharts";
+import Tabela from "@/componentes/TabelaDirecao";
+import TabelaDetalhamento from "@/componentes/Tabeladetalhamentokr";
 
 const DashboardKrs = () => {
   return (
-    <main>
+    <main className="grid gap-3 px-8">
       <section className="grid gap-3 px-5 py-4 sm:grid-cols-2 lg:grid-cols-4">
         <Card className="@container/card bg-linear-to-b from-[#080808] via-[#141212] to-[#2b0311] text-white border-[#F31260]">
           <div className="flex px-6 lg:px-10">
@@ -78,8 +81,22 @@ const DashboardKrs = () => {
         </Card>
       </section>
 
-      <section>
+      <section className="flex justify-between gap-6 px-10">
         <GraficoBarCharts />
+        <div className="grid justify-center min-w-100 gap-2">
+          <div className="pt-8">
+            <h2 className="text-2xl text-white">Distribuição dos KRs por Percentual</h2>
+            <GraficoPieChats />
+          </div>
+          <div>
+            <h2 className="text-xl text-white pb-3">Visão dos KRs Segmentada por Direção</h2>
+            <Tabela />
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <TabelaDetalhamento />
       </section>
     </main>
   );
