@@ -40,8 +40,9 @@ const products = [
 
 export default function Tabela() {
   return (
-    <div className="w-full border bg-linear-to-b from-[#000000] via-[#06090f] to-[#0A0E17] text-white rounded-md overflow-hidden">
-      <Table>
+    <div className="w-full px-4 py-7 bg-linear-to-b from-[#000000] via-[#06090f] to-[#0A0E17] text-white border-0 rounded-lg">
+      <h2 className="text-xl text-white pb-3">Visão dos KRs Segmentada por Direção</h2>
+      <Table className="border rounded-lg ">
         <TableHeader>
           <TableRow>
             <TableHead className="text-white">Diretoria</TableHead>
