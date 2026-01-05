@@ -17,7 +17,7 @@ const data = [
 
 const SimpleBarChart = () => {
   return (
-    <div className="grid w-full gap-5">
+    <div className="grid bg-linear-to-b from-[#000000] via-[#06090f] to-[#05060a] px-4 py-7 rounded-sm w-full gap-5">
       <h2 className="text-white text-2xl">Visão mensal dos Krs</h2>
       <BarChart
         style={{ width: "100%", maxWidth: "1300", maxHeight: "70vh", aspectRatio: 1.618 }}
@@ -36,9 +36,9 @@ const SimpleBarChart = () => {
         <YAxis width="auto" />
         <Tooltip />
         <Legend />
-        <Bar dataKey="risco" fill="#F31260" />
-        <Bar dataKey="atencao" fill="#F5A524" />
-        <Bar dataKey="seguranca" fill="#17C964" />
+        <Bar dataKey="risco" name="Risco" fill="#F31260" />
+        <Bar dataKey="atencao" name="Atenção" fill="#F5A524" />
+        <Bar dataKey="seguranca" name="Segurança" fill="#17C964" />
       </BarChart>
     </div>
   );
