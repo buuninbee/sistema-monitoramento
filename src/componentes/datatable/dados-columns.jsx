@@ -1,16 +1,6 @@
 "use client";
 
-import {
-  ArrowUpDown,
-  CalendarIcon,
-  Check,
-  CircleDashed,
-  Clock,
-  Ellipsis,
-  Search,
-  Text,
-  X,
-} from "lucide-react";
+import { CircleDashed, CirclePlus, Ellipsis, Search, Text } from "lucide-react";
 import * as React from "react";
 import { DataTableColumnHeader } from "@/components/data-table-column-header";
 import { Badge } from "@/components/ui/badge";
@@ -131,11 +121,16 @@ const columns = [
     ),
   },
   {
-    id: "Area",
+    id: "area",
     accessorKey: "area",
     header: ({ column }) => <DataTableColumnHeader column={column} label="Área" />,
     cell: ({ cell }) => cell.getValue(),
     enableColumnFilter: true,
+    meta: {
+      label: "Área",
+      variant: "multiSelect",
+      filterFns: "equalString",
+    },
   },
   {
     id: "email",
@@ -286,9 +281,23 @@ export default function Datatabela({ data }) {
   });
 
   const statusColumn = table.getColumn("status");
-  console.log(statusColumn);
+  const areaColumn = table.getColumn("area");
 
-  const statuses = Array.from(statusColumn?.getFacetedUniqueValues().keys() ?? []);
+  const filtros = [
+    {
+      id: "Status",
+      coluna: table.getColumn("status"),
+      valor: Array.from(statusColumn?.getFacetedUniqueValues().keys() ?? []),
+    },
+    {
+      id: "Área",
+      coluna: table.getColumn("area"),
+      valor: Array.from(areaColumn?.getFacetedUniqueValues().keys() ?? []),
+    },
+  ];
+
+  console.log(areaColumn?.getFacetedUniqueValues().keys());
+
   return (
     <div className="flex flex-col gap-3 py-4">
       <div className="flex justify-between">
@@ -302,30 +311,45 @@ export default function Datatabela({ data }) {
               className="pl-8 h-10 text-white text-sm border-border/50"
             />
           </div>
-          <div>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="sm">
-                  Status
-                </Button>
-              </DropdownMenuTrigger>
+          <div className="flex gap-2.5 ">
+            {filtros.map(({ id, valor, coluna }) => {
+              return (
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      className="bg-stone-950 cursor-pointer border-stone-700 border-dashed text-white "
+                      variant="outline"
+                      size="sm"
+                    >
+                      <CirclePlus />
+                      {id}
+                    </Button>
+                  </DropdownMenuTrigger>
 
-              <DropdownMenuContent>
-                {statuses.map((status) => (
-                  <DropdownMenuItem
-                    key={status}
-                    onClick={() => statusColumn?.setFilterValue(status)}
-                    className="capitalize"
-                  >
-                    {status}
-                  </DropdownMenuItem>
-                ))}
-
-                <DropdownMenuItem onClick={() => statusColumn?.setFilterValue(undefined)}>
-                  Limpar filtro
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+                  <DropdownMenuContent className="bg-stone-950 text-white">
+                    {valor.map((opcoes) => {
+                      return (
+                        <DropdownMenuItem
+                          key={opcoes}
+                          onClick={() => coluna?.setFilterValue(opcoes)}
+                          className="capitalize cursor-pointer hover:bg-stone-800"
+                        >
+                          <Checkbox className="cursor-pointer" aria-label="Select row" />
+                          {opcoes}
+                        </DropdownMenuItem>
+                      );
+                    })}
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem
+                      className="text-center cursor-pointer hover:bg-stone-800"
+                      onClick={() => coluna?.setFilterValue(undefined)}
+                    >
+                      Limpar filtro
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              );
+            })}
           </div>
         </div>
 
