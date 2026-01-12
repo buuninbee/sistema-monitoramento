@@ -5,8 +5,7 @@ import { BrowserRouter, NavLink, Route, Routes } from "react-router";
 import App from "./App.jsx";
 import DashboardKrs from "./pages/DashboardKrs.jsx";
 
-import { AppSidebar } from "@/components/app-sedebar";
-import { Separator } from "@/components/ui/separator";
+import LayoutDashboard from "./pages/LayoutDashboard";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
 createRoot(document.getElementById("root")).render(
@@ -17,6 +16,7 @@ createRoot(document.getElementById("root")).render(
 
         <Routes>
           <Route index element={<App />} />
+        <Route element={<LayoutDashboard />}>
           <Route path="/dashboard-krs" element={<DashboardKrs />} />
         </Routes>
       </SidebarProvider>
