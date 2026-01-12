@@ -11,7 +11,7 @@ const LayoutDashboard = () => {
       <SidebarProvider>
         <AppSidebar />
         <div className="w-full">
-          <header className="bg-[#171717] text-white h-24 rounded-bl-4xl w-full px-8 flex mb-3">
+          <header className="bg-[#171717] text-white h-24 rounded-bl-4xl w-full px-8 flex">
             <nav className="flex justify-between items-center-safe w-full">
               <div className="flex gap items-center">
                 <div className="flex gap-1 items-center">
