@@ -32,7 +32,7 @@ export default function ChartPieDonutText() {
   }, []);
 
   return (
-    <div className="flex min-h-75 py-3 rounded-lg flex-col bg-linear-to-b from-[#000000] via-[#06090f] to-[#05060a] text-white border-0">
+    <div className="flex min-h-10 py-3 rounded-lg flex-col bg-linear-to-b from-[#000000] via-[#06090f] to-[#05060a] text-white border-0">
       <div className="grid gap-6 px-4 items-center pb-0">
         <div className="">
           <h2 className="text-lg pb-1">Distribuição dos KRs por Percentual</h2>
@@ -41,7 +41,7 @@ export default function ChartPieDonutText() {
       </div>
       <div className="flex-1 pb-0 ">
         <ChartContainer config={chartConfig} className="mx-auto aspect-square">
-          <PieChart className="">
+          <PieChart>
             <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
             <Pie
               data={chartData}
