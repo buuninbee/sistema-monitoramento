@@ -20,7 +20,7 @@ const SimpleBarChart = () => {
     <div className="grid bg-linear-to-b from-[#000000] via-[#06090f] to-[#05060a] px-4 py-7 rounded-sm w-full gap-5">
       <h2 className="text-white text-2xl">Visão mensal dos Krs</h2>
       <BarChart
-        style={{ width: "100%", maxWidth: "1300", maxHeight: "70vh", aspectRatio: 1.618 }}
+        style={{ width: "100%", maxWidth: "1300", maxHeight: "40vh", aspectRatio: 1.618 }}
         responsive
         data={data}
         margin={{
