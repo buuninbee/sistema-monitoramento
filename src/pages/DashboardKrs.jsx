@@ -6,14 +6,9 @@ import iconRisco from "@/assets/icon-risco.svg";
 import iconSeguranca from "@/assets/icon-seguranca.svg";
 import iconTotal from "@/assets/icon-total.svg";
 import GraficoBarCharts from "@/componentes/GraficoBarChart";
-import GraficoPieChats from "@/componentes/GraficoPieCharts";
+import ChartPieDonutText from "@/componentes/GraficoPieCharts";
 import Tabela from "@/componentes/TabelaDirecao";
-// import TabelaDetalhamento from "@/componentes/Tabeladetalhamentokr";
 
-import { BrowserRouter, NavLink, Route, Routes } from "react-router";
-
-import { Separator } from "@/components/ui/separator";
-import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import Datatabela from "@/componentes/datatable/dados-columns";
 
 const krs = [
@@ -223,31 +218,6 @@ const DashboardKrs = () => {
   return (
     <>
       <main className=" flex-1 overflow-auto p-3 sm:p-4 md:p-6 space-y-4 sm:space-y-6 bg-[#0a0a0a] w-full">
-        <header className="bg-[#171717]  text-white h-24 rounded-bl-4xl w-full px-8 py-7 flex mb-3">
-          <nav className="flex justify-between items-center-safe w-full">
-            <div className="flex gap items-center">
-              <div className="flex gap-1 items-center">
-                <SidebarTrigger className="-ml-1 text-(--terciario-200)" />
-                <Separator
-                  orientation="vertical"
-                  className="mr-3 data-[orientation=vertical]:h-8"
-                />
-              </div>
-              <NavLink to="/adm/pedidos">
-                {/* <img className="w-36 h-auto" src={Logo} alt="logo waiter"/> */} NUPIE
-              </NavLink>
-            </div>
-
-            <div
-              className="flex 
-            gap-7"
-            >
-              <button className=" bg-(--terciario-300) py-2.5 px-2.5 rounded-full">
-                {/* <img src={impressroa} alt="" /> */} Final
-              </button>
-            </div>
-          </nav>
-        </header>
         <section className="grid px-4 gap-3 sm:grid-cols-2 lg:grid-cols-4">
           <Card className="@container/card bg-linear-to-br from-[#080808] via-[#080808] to-[#2b0311] text-white border-2 border-neutral-800">
             <div className="flex px-6 lg:px-10">
@@ -319,14 +289,12 @@ const DashboardKrs = () => {
         <section className="flex px-4 justify-between gap-6">
           <GraficoBarCharts />
           <div className="grid justify-center min-w-100 gap-2">
-            <GraficoPieChats />
+            <ChartPieDonutText />
             <Tabela />
           </div>
         </section>
 
         <section className="px-4">
-          {/* <TabelaDetalhamento /> */}
-
           <Datatabela data={krs} />
         </section>
       </main>
